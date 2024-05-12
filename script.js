@@ -3,6 +3,9 @@ const baseUrl = "https://api.themoviedb.org/3";
 const apiURl = baseUrl + "/discover/movie?sort_by=popularity.desc&" + apiKey;
 const imgUrl = "https://image.tmdb.org/t/p/w500";
 const main = document.getElementById("main");
+const form = document.getElementById("form");
+const search = document.getElementById("search");
+const searchURl = baseUrl + "/search/movie?" + apiKey;
 
 function getMovies(url) {
   fetch(url)
@@ -42,3 +45,13 @@ function getColor(vote) {
     return "red";
   }
 }
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const searchTerm = search.value;
+  if (searchTerm) {
+    getMovies(searchURl + "&query=" + searchTerm);
+  } else {
+    getMovies(apiURl);
+  }
+});
