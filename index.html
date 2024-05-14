@@ -3,57 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie app</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Movie</title>
+    <link rel="stylesheet" href="login.css" />
+    <script
+      src="https://kit.fontawesome.com/2e84febe53.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <header>
-      <form action="" id="form">
-        <input type="text" id="search" class="search" placeholder="search" />
-      </form>
-    </header>
-    <div id="tag">
-      <div class="tags">action</div>
-      <div class="tags">adventure</div>
-      <div class="tags">drama</div>
-      <div class="tags">comedy</div>
+    <div class="container">
+      <div class="form-box">
+        <h1 id="title">Sign Up</h1>
+        <form action="" id="reg">
+          <div class="input-group">
+            <div class="input-field" id="nameField">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" placeholder="Name" id="userName" required />
+            </div>
+            <div class="input-field">
+              <i class="fa-solid fa-envelope"></i>
+              <input type="email" placeholder="email" id="userEmail" required />
+            </div>
+            <div class="input-field">
+              <i class="fa-solid fa-lock"></i>
+              <input
+                type="password"
+                placeholder="password"
+                id="userPassword"
+                required
+              />
+            </div>
+            <p>Lost password? <a href="">CLick here</a></p>
+          </div>
+          <div class="btn-field">
+            <button type="submit" id="signupBtn">Sign Up</button>
+            <button type="submit" class="disable" id="signinBtn">
+              sign in
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    <main id="main">
-      <div class="movie">
-        <img src="img/action.jpg" alt="action logo" />
-        <div class="movie-info">
-          <h3>Movie Title</h3>
-          <span class="green">9.8</span>
-        </div>
-        <div class="overview">
-          <h3>Overview</h3>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, adipisci
-          suscipit quia, eius error doloribus minus eveniet,
-        </div>
-      </div>
-      <div class="movie">
-        <img src="img/action.jpg" alt="action logo" />
-        <div class="movie-info">
-          <h3>Movie Title</h3>
-          <span class="green">9.8</span>
-        </div>
-        <div class="overview">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, adipisci
-          suscipit quia, eius error doloribus minus eveniet,
-        </div>
-      </div>
-      <div class="movie">
-        <img src="img/action.jpg" alt="action logo" />
-        <div class="movie-info">
-          <h3>Movie Title</h3>
-          <span class="green">9.8</span>
-        </div>
-        <div class="overview">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, adipisci
-          suscipit quia, eius error doloribus minus eveniet,
-        </div>
-      </div>
-    </main>
-    <script src="script.js"></script>
+    <script>
+      let signupBtn = document.getElementById("signupBtn");
+      let signinBtn = document.getElementById("signinBtn");
+      let nameField = document.getElementById("nameField");
+      let title = document.getElementById("title");
+      let reg = document.getElementById("reg");
+      signinBtn.addEventListener("click", function () {
+        nameField.style.maxHeight = "0";
+        title.innerHTML = "Sign In";
+        signupBtn.classList.add("disable");
+        signinBtn.classList.remove("disable");
+      });
+      signupBtn.addEventListener("click", function () {
+        nameField.style.maxHeight = "60px";
+        title.innerHTML = "Sign Up";
+        signupBtn.classList.remove("disable");
+        signinBtn.classList.add("disable");
+      });
+
+      reg.addEventListener("submit", function (e) {
+        
+        let userName = document.getElementById("userName").value;
+        let userEmail = document.getElementById("userEmail").value;
+        let userPassword = document.getElementById("userPassword").value;
+
+        if (
+          userName.length >= 8 &&
+          userEmail.length >= 8 &&
+          userPassword.length >= 8
+        ) {
+          document.location.href = "movie.html";
+        } else {
+          alert("Invalid password or username");
+        }
+      });
+    </script>
   </body>
 </html>
