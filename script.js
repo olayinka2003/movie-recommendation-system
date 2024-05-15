@@ -86,6 +86,7 @@ const genre = {
     },
   ],
 };
+const signOut = document.querySelector(".sign-out");
 const tagEl = document.getElementById("tag");
 setGenre();
 function setGenre() {
@@ -102,7 +103,7 @@ function setGenre() {
   });
 }
 
-function getMovies(url ) {
+function getMovies(url) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
@@ -149,4 +150,8 @@ form.addEventListener("submit", (e) => {
   } else {
     getMovies(apiURl);
   }
+});
+
+signOut.addEventListener("click", () => {
+  document.location.href = "index.html";
 });
