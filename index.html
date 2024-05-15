@@ -18,7 +18,7 @@
           <div class="input-group">
             <div class="input-field" id="nameField">
               <i class="fa-solid fa-user"></i>
-              <input type="text" placeholder="Name" id="userName" required />
+              <input type="text" placeholder="Name" id="userName" />
             </div>
             <div class="input-field">
               <i class="fa-solid fa-envelope"></i>
@@ -50,33 +50,45 @@
       let nameField = document.getElementById("nameField");
       let title = document.getElementById("title");
       let reg = document.getElementById("reg");
-      signinBtn.addEventListener("click", function () {
+
+     
+      signinBtn.addEventListener("click", function (e) {
+        e.preventDefault();
         nameField.style.maxHeight = "0";
         title.innerHTML = "Sign In";
         signupBtn.classList.add("disable");
         signinBtn.classList.remove("disable");
+
+        let userEmail = document.getElementById("userEmail").value;
+        let userPassword = document.getElementById("userPassword").value;
+
+        if (userEmail.length >= 8 && userPassword.length >= 8) {
+          document.location.href = "movie.html";
+        } else {
+          alert("Invalid user email or password");
+        }
       });
-      signupBtn.addEventListener("click", function () {
+
+     
+      signupBtn.addEventListener("click", function (e) {
+        e.preventDefault();
         nameField.style.maxHeight = "60px";
         title.innerHTML = "Sign Up";
         signupBtn.classList.remove("disable");
         signinBtn.classList.add("disable");
-      });
 
-      reg.addEventListener("submit", function (e) {
-        
         let userName = document.getElementById("userName").value;
         let userEmail = document.getElementById("userEmail").value;
         let userPassword = document.getElementById("userPassword").value;
 
         if (
-          userName.length >= 8 &&
+          userName.length >= 5 &&
           userEmail.length >= 8 &&
           userPassword.length >= 8
         ) {
           document.location.href = "movie.html";
         } else {
-          alert("Invalid password or username");
+          alert("Password must be at least 8 characters long");
         }
       });
     </script>

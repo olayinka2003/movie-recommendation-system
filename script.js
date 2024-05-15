@@ -102,7 +102,7 @@ function setGenre() {
   });
 }
 
-function getMovies(url) {
+function getMovies(url ) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
